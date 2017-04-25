@@ -5,7 +5,7 @@ Imports System.Xml
 Module Module1
 	Sub Main()
 		Dim retorno As String = GetResponse("http://200.152.194.6:8888/consultas.asmx",
-									  "http://tempuri.org/ConsultaConsolidadaPagamentoPorData",
+									  "ConsultaConsolidadaPagamentoPorData",
 									  My.Resources.App.SOAPEnvelope)
 		Console.WriteLine(retorno)
 		Console.Read()
@@ -17,7 +17,6 @@ Module Module1
 	''' <returns></returns>
 	Public Function CreateWebRequest(url As String, soapAction As String) As HttpWebRequest
 		Dim request As HttpWebRequest = WebRequest.Create(url)
-		request.Headers.Add($"SOAPAction:{soapAction}")
 		request.ContentType = "text/xml; charset=utf-8"
 		request.Accept = "text/xml"
 		request.Method = "POST"
